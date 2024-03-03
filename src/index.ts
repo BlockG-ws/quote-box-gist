@@ -1,4 +1,6 @@
 import { join } from 'path'
+import { getInput } from '@actions/core';
+import { quoteFile } from getInput('quoteFile')
 import { writeFile } from 'fs/promises'
 
 export interface Resp {
@@ -10,17 +12,19 @@ export interface Resp {
 }
 
 ;(async () => {
-  const data: Resp = await fetch('https://v0.elegant.tw/all').then((res) =>
+  const text = quoteFile as JSON[]
+  const rnd = Math.floor(Math.random() * text.length)
+  const data: Resp = text[rnd].then((res) =>
     res.json(),
   )
 
   const content = `${data.sentence}
  ——${data.author !== null ? data.author : data.cite}
 
-於 ${new Date().toLocaleString('zh-TW', {
-    timeZone: 'Asia/Taipei',
+更新于 ${new Date().toLocaleString('zh-CN', {
+    timeZone: 'Asia/Shanghai',
     hourCycle: 'h23',
-  })} 更新`
+  })}`
 
   console.log(`\n${content}\n`)
 
@@ -31,5 +35,5 @@ export interface Resp {
     process.exit(1)
   }
 
-  console.log('INFO: 成功儲存。\n')
+  console.log('INFO: 保存成功\n')
 })()

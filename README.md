@@ -1,6 +1,6 @@
-# quote-box-zh_tw
+# quote-box
 
-下載一則隨機的語錄，格式化後存檔至 `quote.txt`。你可以利用 GitHub Actions 來定時推送到 [Gist](https://gist.github.com) 並釘選至個人檔案，以增添其豐富度。
+从句子json中随机抽取语录，格式化後保存至 `quote.txt`。你可以利用 GitHub Actions 來定時推送到 [Gist](https://gist.github.com) 在个人资料中置顶，以增添其豐富度。
 
 語錄 API 由 [言雅 Elegent TW](https://elegant.tw) 提供。
 
@@ -29,7 +29,8 @@ jobs:
       GIST_ID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     steps:
     - name: Download
-      uses: rnmeow/quote-box-zh_tw@0.1.0
+      uses: BlockG-ws/quote-box@0.1.0
+      file: './quotes.json'
     - name: Push
       uses: exuanbo/actions-deploy-gist@v1.1.4
       with:
