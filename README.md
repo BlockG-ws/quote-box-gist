@@ -29,8 +29,8 @@ jobs:
       GIST_ID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     steps:
     - name: Download
-      uses: BlockG-ws/quote-box@0.1.0
-      file: './quotes.json'
+      uses: BlockG-ws/quote-box@master # 尚未發布到 Marketplace
+      quotes: './quotes.json'
     - name: Push
       uses: exuanbo/actions-deploy-gist@v1.1.4
       with:
