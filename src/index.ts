@@ -2,7 +2,7 @@ import { join } from 'path'
 import { getInput } from '@actions/core'
 import { writeFile } from 'fs/promises'
 
-export const quotes = getInput('quotes')
+export const text = getInput('quotes')
 
 export interface Resp {
   id: number
@@ -13,8 +13,10 @@ export interface Resp {
 }
 
 ;(async () => {
+  const quotes: Resp[] = JSON.parse(text)
   const rnd = Math.floor(Math.random() * quotes.length)
-  const data: Resp = JSON.parse(quotes)[rnd]
+
+  const data = quotes[rnd]
 
   const content = `${data.sentence}
  ——${data.author !== null ? data.author : data.cite}
