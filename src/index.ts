@@ -1,8 +1,6 @@
 import { join } from 'path'
 import { getInput } from '@actions/core'
-import { writeFile } from 'fs/promises'
-
-export const text = getInput('quotes')
+import { readFile, writeFile } from 'fs/promises'
 
 export interface Resp {
   id: number
@@ -13,9 +11,10 @@ export interface Resp {
 }
 
 ;(async () => {
-  const quotes: Resp[] = JSON.parse(text)
+  const quotes: Resp[] = await readFile(join(__dirname, getInput('quotes')))
+    .then((buf) => buf.toString('utf-8'))
+    .then((text) => JSON.parse(text))
   const rnd = Math.floor(Math.random() * quotes.length)
-
   const data = quotes[rnd]
 
   const content = `${data.sentence}
