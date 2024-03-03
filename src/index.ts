@@ -1,7 +1,8 @@
 import { join } from 'path'
-import { getInput } from '@actions/core';
-import { quoteFile } from getInput('quoteFile')
+import { getInput } from '@actions/core'
 import { writeFile } from 'fs/promises'
+
+export const quotes = getInput('quotes')
 
 export interface Resp {
   id: number
@@ -12,11 +13,8 @@ export interface Resp {
 }
 
 ;(async () => {
-  const text = quoteFile as JSON[]
-  const rnd = Math.floor(Math.random() * text.length)
-  const data: Resp = text[rnd].then((res) =>
-    res.json(),
-  )
+  const rnd = Math.floor(Math.random() * quotes.length)
+  const data: Resp = JSON.parse(quotes)[rnd]
 
   const content = `${data.sentence}
  ——${data.author !== null ? data.author : data.cite}
