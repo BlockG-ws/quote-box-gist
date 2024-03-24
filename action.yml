@@ -1,6 +1,6 @@
-name: quote-box-zh_tw
-author: Yu-huan Kuo <touch@rnmeow.com>
-description: Get a quote to your GitHub Gist, API powered by Elegant TW.
+name: quote-box-gist
+author: BlockG-ws <ws@imgb.space>
+description: Get a quote to your GitHub Gist, just right from your library.
 runs:
   using: 'node20'
   main: 'dist/index.js'

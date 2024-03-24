@@ -1,15 +1,24 @@
 # quote-box
 
-从句子json中随机抽取语录，格式化後保存至 `quote.txt`。你可以利用 GitHub Actions 來定時推送到 [Gist](https://gist.github.com) 在个人资料中置顶，以增添其豐富度。
+从句子json中随机抽取语录，格式化后保存至 `quote.txt`。你可以利用 GitHub Actions 來定时推送到 [Gist](https://gist.github.com) 并在个人资料中置顶，以增添其丰富程度。
 
-語錄 API 由 [言雅 Elegent TW](https://elegant.tw) 提供。
 
 > *PS. 若想了解更多「置頂 Gist」專案，請參見*  
 > *<https://github.com/matchai/awesome-pinned-gists>*
 
 ## 使用
 
-你可以使用 GitHub Actions 作業流程來執行操作，以下為一個範例，使用 [Deploy to Gist](https://github.com/marketplace/actions/deploy-to-gist)：
+首先在需要运行 Actions 的仓库根目录创建 `quotes.json`：
+```json
+[
+  {"id":1,"sentence":"海内存知己，天涯若比邻。请稍候...","category":1,"cite":"Windows 10/11 OOBE","author":"微软式中文"},
+  {"id":2,"sentence":"我明白了勇气并不代表没有恐惧，而是战胜恐惧。勇敢的人不是不会恐惧的人，而是战胜了恐惧的人。","category":2,"cite":"...","author":"纳尔逊·曼德拉"},
+  ...
+  {"id":42,"sentence":"愛是唯一可以超越時間與空間的事物。","category":2,"cite":"星際效應","author":"艾蜜莉亞・布蘭德"}
+]  
+```
+
+你可以使用 GitHub Actions 以将其推送到一个Gist，以下為一個範例，使用 [Deploy to Gist](https://github.com/marketplace/actions/deploy-to-gist)：
 
 ```yaml
 name: Push to Gist
@@ -44,6 +53,10 @@ jobs:
 # Authored by Yu-huan Kuo, licensed under MIT License.
 ```
 
-## 授權
+## 授权
 
+原代码：
 Copyright (C) 2023, 2024 [Yu-huan Kuo](https://github.com/rnmeow), licensed under [MIT License](https://github.com/rnmeow/quote-box-zh_tw/blob/master/LICENSE.txt).
+
+此Fork：
+Licensed under MIT License.
