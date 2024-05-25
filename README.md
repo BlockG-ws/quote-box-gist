@@ -3,7 +3,7 @@
 从句子json中随机抽取语录，格式化后保存至 `quote.txt`。你可以利用 GitHub Actions 來定时推送到 [Gist](https://gist.github.com) 并在个人资料中置顶，以增添其丰富程度。
 
 
-> *PS. 若想了解更多「置頂 Gist」專案，請參見*  
+> *PS. 若想了解更多「置顶 Gist」项目，可以看看：*  
 > *<https://github.com/matchai/awesome-pinned-gists>*
 
 ## 使用
@@ -18,7 +18,7 @@
 ]  
 ```
 
-你可以使用 GitHub Actions 以将其推送到一个Gist，以下為一個範例，使用 [Deploy to Gist](https://github.com/marketplace/actions/deploy-to-gist)：
+你可以使用 GitHub Actions 以将其推送到一个Gist，以下是一个使用 [Deploy to Gist](https://github.com/marketplace/actions/deploy-to-gist) 的例子：
 
 ```yaml
 name: Push to Gist
@@ -28,7 +28,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: 0 0 * * * # 每天執行
+    - cron: 0 0 * * * # 每天0点（UTC）执行
 
 jobs:
   push:
@@ -38,15 +38,15 @@ jobs:
       GIST_ID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     steps:
     - name: Download
-      uses: BlockG-ws/quote-box-gist@master # 尚未發布到 Marketplace
+      uses: BlockG-ws/quote-box-gist@0.2.0
       with:
-        quotes: ./quotes.json # 可選
+        quotes: ./quotes.json # 可选，默认为仓库根目录的 quotes.json
     - name: Push
       uses: exuanbo/actions-deploy-gist@v1.1.4
       with:
-        token: ${{ secrets.GH_TOKEN }} # 需要自行產生
-        gist_id: ${{ env.GIST_ID }} # 上述 `env` 設定
-        gist_file_name: ${{ env.FILE_NAME }} # 上述 `env` 設定
+        token: ${{ secrets.GH_TOKEN }} # 需要自行生成
+        gist_id: ${{ env.GIST_ID }} # 上述 `env` 中的设定
+        gist_file_name: ${{ env.FILE_NAME }} # 上述 `env` 中的设定
         file_path: quote.txt
         file_type: text
 
