@@ -16,5 +16,9 @@
     "@types/node": "^20.11.24",
     "esbuild": "^0.20.1",
     "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "typescript": "^5.4.5",
+    "undici-types": "^6.18.1"
   }
 }

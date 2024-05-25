@@ -11,7 +11,7 @@ export interface Resp {
 }
 
 ;(async () => {
-  const quotes: Resp[] = await readFile(join(__dirname, getInput('quotes')))
+  const quotes: Resp[] = await readFile(join(process.cwd(), getInput('quotes')))
     .then((buf) => buf.toString('utf-8'))
     .then((text) => JSON.parse(text))
   const rnd = Math.floor(Math.random() * quotes.length)
