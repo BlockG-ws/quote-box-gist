@@ -59,4 +59,4 @@ jobs:
 Copyright (C) 2023, 2024 [Yu-huan Kuo](https://github.com/rnmeow), licensed under [MIT License](https://github.com/rnmeow/quote-box-zh_tw/blob/master/LICENSE.txt).
 
 此Fork：
-Licensed under MIT License.
+Licensed under [GNU Affero General Public License v3.0](./LICENSE).
